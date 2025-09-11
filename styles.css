@@ -1,0 +1,591 @@
+/* Reset y tipografía */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f6f6f6;
+}
+
+/* Sección hero */
+.hero {
+  height: 600px;
+  background: linear-gradient(to right, #4d6d94ed 66.66%, #efeeee 33.33%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+}
+
+/* Imagen hero */
+.hero-img {
+  width: 350px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 10%;
+  border: 4px solid white;
+  position: absolute;
+  left: 66.66%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Texto hero */
+.hero-text {
+  width: 50%; /* ocupa 56% del ancho */
+  color: white;
+  z-index: 1; /* para que quede por encima del fondo */
+  padding: 20px;
+}
+
+.hero-text h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.8rem;
+  line-height: 1.2;
+}
+
+.hero-text h2 {
+  margin: 0 0 15px 0;
+  font-weight: normal;
+  font-size: 1.8rem;
+  opacity: 0.9;
+  border-bottom: 2px solid white; /* línea debajo */
+  display: inline-block; /* para que la línea tenga el largo del texto */
+  padding-bottom: 5px;   /* separa línea del texto */
+}
+
+
+.hero-text p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+.hero-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  border: 2px solid white;
+  color: white;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.btn:hover {
+  background-color: white;
+  color: #4d6d94;
+  border-color: #4d6d94;
+}
+
+.link {
+    background-color: white !important;
+    color: #4d6d94 !important;
+    border-color: #4d6d94;
+}
+
+.link:hover {
+    border: 2px solid white;
+    color: white !important;
+    background-color: rgba(255,255,255,0.1) !important;
+}
+
+/* Responsive para pantallas más pequeñas */
+@media (max-width: 1200px) {
+  .hero-text {
+    width: 60%;
+    font-size: 0.9rem;
+    color: white;
+  }
+
+  .hero-img {
+    width: 250px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    height: auto; /* para que se adapte al contenido */
+  }
+
+  .hero-img {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin-bottom: 20px;
+  }
+
+  .hero-text {
+    width: 90%;
+    padding: 0; /* quitamos padding extra si querés */
+    background-color: transparent; /* quitamos el cuadro */
+    color: #4d6d94; /* opcional: azul para que contraste con fondo blanco */
+    text-align: center; /* opcional para centrar el texto */
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn {
+    width: 70%;
+    text-align: center;
+  }
+}
+
+
+/* Sección educación */
+
+.educacion {
+  padding: 40px 20px;
+}
+
+.educacion-container {
+  width: 70%;
+  max-width: 1000px;
+  margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.educacion h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #4d6d94;
+  text-align: center;
+}
+
+.estudios-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.estudio-card {
+  background-color: #9fb4cd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.estudio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.estudio-card.no-cert {
+  cursor: default; /* sin manito */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: none;
+}
+
+.estudio-card.no-cert:hover {
+  transform: none; /* sin efecto hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.estudio-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.estudio-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+}
+
+/* Modal */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal img {
+  display: block;
+  max-width: 90%;
+  max-height: 80%;
+  margin: 5% auto;
+  border-radius: 10px;
+  object-fit: contain; /* mantiene proporción */
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .educacion-container {
+    width: 90%;
+  }
+
+  .educacion h2 {
+    font-size: 1.8rem;
+  }
+
+  .estudio-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .estudio-card p {
+    font-size: 0.95rem;
+  }
+
+  .modal iframe {
+    width: 95%;
+    height: 70%;
+  }
+}
+
+/* Sección proyectos */
+
+.proyectos {
+  background: linear-gradient(
+    to bottom,
+    #4d6d94 0%,
+    #4d6d94 60%, /* 3/5 azul */
+    #efeeee 60%, 
+    #efeeee 100% /* 2/5 gris */
+  );
+  padding: 40px 20px;
+}
+
+.proyectos-container {
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+    padding-bottom: 40px;
+}
+
+.proyectos h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: white; /* contrasta con el azul */
+}
+
+/* Cards */
+.proyectos-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.proyecto-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+
+.proyecto-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.proyecto-card h3 {
+  color: #344963;
+}
+
+.proyecto-card p {
+  color: #344963;
+}
+
+.proyecto-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #4d6d94;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .proyectos-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Sección trabajo */
+
+.trabajo {
+  background-color: white;
+  padding: 40px 20px;
+}
+
+.trabajo-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.trabajo h2 {
+  font-size: 2.2rem;
+  color: #4d6d94;
+  margin-bottom: 40px;
+}
+
+.trabajo-card {
+  background-color: #9fb4cd;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.trabajo-card h3 {
+  margin: 0 0 10px 0;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.trabajo-card p {
+  color: white;
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.trabajo-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: white;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .trabajo-container {
+    width: 90%;
+  }
+}
+
+/* Sección habilidades */
+
+.habilidades-contacto {
+  display: flex;
+  min-height: 400px;
+  font-family: Arial, sans-serif;
+}
+
+.habilidades-container {
+  display: flex;
+  width: 100%;
+}
+
+/* 2/3 gris: card de habilidades */
+.habilidades-info {
+  background-color: #efeeee;
+  width: 66.66%;
+  padding: 40px;
+  box-sizing: border-box;
+  padding-bottom: 80px;
+}
+
+.habilidades-info h2 {
+  color: #4d6d94;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+.habilidades-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.habilidades-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #344963;
+}
+
+/* 1/3 azul: idiomas */
+.idiomas-info {
+  background-color: #4d6d94ed;
+  width: 33.33%;
+  padding: 40px;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+    padding-bottom: 80px;
+}
+
+.idiomas-info h2 {
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.idiomas-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.idioma img {
+  width: 60px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.idioma p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .habilidades-contacto {
+    flex-direction: column;
+  }
+
+  .habilidades-info, .idiomas-info {
+    width: 100%;
+  }
+
+  .idiomas-icons {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+/* Sección contacto */
+
+.contacto {
+  background-color: #4d6d94; /* tu azul */
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.saludo {
+  font-size: 1.2rem;
+}
+
+.contacto a {
+  color: #f6f6f6;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.contacto a:hover {
+  color: #cfdfff;
+}
+
+
+
+/* Ajustes responsive adicionales para hero */
+@media (max-width: 768px) {
+  /* Fondo azul transparente para el texto */
+  .hero-text {
+    background-color: rgba(35, 49, 67, 0.384);
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  /* Margen debajo de los botones */
+  .hero-buttons {
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Responsive para habilidades e idiomas */
+@media (max-width: 900px) {
+  .habilidades-contacto {
+    flex-direction: column; /* apila card y idiomas */
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .habilidades-container {
+    display: block; /* para que card e idiomas no se mantengan en fila */
+  }
+
+  .habilidades-info, .idiomas-info {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .idiomas-icons {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .idioma img {
+    width: 50px;
+    height: 35px;
+  }
+}
